@@ -1,4 +1,6 @@
-### Experiment 1: Decentralized Certificate Verification
+# Experiment 1: Decentralized Certificate Verification
+## NAME : S LALIT CHANDRAN
+## REGISTER NUMBER : 212223240077
 ## Aim:
   To develop a smart contract for issuing and verifying academic certificates on Ethereum, preventing forgery and ensuring authenticity.
 ## Algorithm:
@@ -19,17 +21,25 @@ university = msg.sender; // University deploys the contract
 }
 function issueCertificate(string memory studentName, string memory degree, uint256 year) public {
 require(msg.sender == university, "Only university can issue certificates");
-bytes32 certHash = keccak256(abi.encodePacked(studentName, degree, year));
+bytes32 certHash = keccak256(abi.encodePacked(studentName, degree,
+year));
 certificates[certHash] = true;
 emit CertificateIssued(certHash);
 }
-function verifyCertificate(string memory studentName, string memory degree, uint256 year) public view returns (bool) {
-bytes32 certHash = keccak256(abi.encodePacked(studentName, degree, year));
+function verifyCertificate(string memory studentName, string memory degree,
+uint256 year) public view returns (bool) {
+bytes32 certHash = keccak256(abi.encodePacked(studentName, degree,
+year));
 return certificates[certHash];
 }
 }
 ```
 # Expected Output:
+
+<img width="1920" height="1080" alt="Screenshot 2025-10-30 112122" src="https://github.com/user-attachments/assets/5269b7d3-d4d1-4efb-b0f5-92370e930621" />
+
+<img width="1920" height="1080" alt="Screenshot 2025-10-30 112142" src="https://github.com/user-attachments/assets/14b16823-5153-44ee-8932-c0bee420fbc5" />
+
 ```
 ● When the university issues a certificate, it gets stored as a hash.
 ● A student or employer can verify the certificate by entering the details.
@@ -41,3 +51,4 @@ High-Level Overview:
 ```
 # Result:
 
+Thus, the smart contract was successfully implemented to issue and verify academic certificates on Ethereum, ensuring authenticity and preventing forgery.
